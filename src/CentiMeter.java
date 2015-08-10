@@ -15,4 +15,11 @@ public class CentiMeter extends Length {
     public Length convertFromCentiMeter(Length length){
         return this;
     }
+
+    public Length addLength(Length length2){
+
+        Length length = new CentiMeter(length2.convertTo(this).getValue()+this.getValue());
+
+        return this;
+    }
 }

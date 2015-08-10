@@ -7,9 +7,7 @@ public class Inch extends Length {
     public Inch(double value){
         super(value);
     }
-    public Inch(){
 
-    }
 
     @Override
     public Length convertToCentiMeter() {
@@ -24,5 +22,11 @@ public class Inch extends Length {
         return inch;
     }
 
+    public Length addLength(Length length2){
+
+        Length length = new Inch(length2.convertTo(this).getValue()+this.getValue());
+
+        return this;
+    }
 
 }

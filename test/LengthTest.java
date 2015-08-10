@@ -22,7 +22,7 @@
                 public void shouldConvertFootToCentiMeter(){
                     Length length1 = new Foot(1);
                     Length length2 = new CentiMeter(30.48);
-                    Assert.assertEquals(30.48, length1.convertTo(length2).getValue(),2);
+                    Assert.assertEquals(30.48, length1.convertTo(length2).getValue(), 2);
                 }
 
                 @Test
@@ -38,6 +38,20 @@
                     Assert.assertEquals(39.3701,length1.convertTo(length2).getValue(),2);
 
         }
+                @Test
+                public void shouldAddInchToMeter(){
+                    Length length1 = new Meter(2);
+                    Length length2 = new Inch(2);
+                    Assert.assertEquals(2.0508,length1.addLength(length2).getValue(),2);
+                }
+
+                @Test
+                public void shouldAddCentiMeterToFoot(){
+                    Length length1 = new Foot(2);
+                    Length length2 = new CentiMeter(3);
+                    Assert.assertEquals(2.098,length1.addLength(length2).getValue(),2);
+                }
+
 
                 }
 

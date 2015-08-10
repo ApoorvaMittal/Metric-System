@@ -6,20 +6,25 @@ abstract public class Length {
     public Length(double value){
         this.value = value;
     }
-    public Length(){
-    }
+
+
     public boolean isEqual(Length length){
 
         return (this.convertToCentiMeter().getValue() == length.convertToCentiMeter().getValue());
     }
-    abstract public Length convertToCentiMeter();
-     public Length convertTo(Length length){
+
+    public Length convertTo(Length length){
          return length.convertFromCentiMeter(this.convertToCentiMeter());
      }
-
-    abstract public Length convertFromCentiMeter(Length length);
 
     public double getValue(){
         return value;
     }
+
+    abstract public Length addLength(Length length);
+
+    abstract public Length convertToCentiMeter();
+
+    abstract public Length convertFromCentiMeter(Length length);
+
 }

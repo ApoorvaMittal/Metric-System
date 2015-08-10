@@ -20,4 +20,10 @@ public class Meter extends Length{
         Length Meter = new Inch(meterValue);
         return Meter;
     }
+
+    public Length addLength(Length length2){
+
+        Length length = new Meter(length2.convertTo(this).getValue()+this.getValue());
+        return this;
+    }
 }

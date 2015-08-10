@@ -9,9 +9,7 @@ public class Foot extends Length{
         super(value);
 
     }
-    public Foot(){
 
-    }
 
     @Override
     public Length convertToCentiMeter() {
@@ -24,6 +22,12 @@ public class Foot extends Length{
         double footValue = (length.getValue())*conversionFactorFromCentiMeterToFoot;
         Length foot = new Foot(footValue);
         return foot;
+    }
+    public Length addLength(Length length2){
+
+        Length length = new Foot(length2.convertTo(this).getValue()+this.getValue());
+
+        return this;
     }
 
 
