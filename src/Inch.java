@@ -1,32 +1,41 @@
 /**
  * Created by Apoorva Mittal on 10-08-2015.
  */
-public class Inch extends Length {
-    private final double conversionFactorForCentiMeter = 2.54;
-    private final double conversionFactorFromCentiMeterToInch = 0.393701;
+public class Inch extends Quantity {
+    private final double CONVERSION_FACTOR_TO_BASE_UNIT = 2.54;
+
     public Inch(double value){
         super(value);
     }
 
 
     @Override
-    public Length convertToCentiMeter() {
-        Length centimeter = new CentiMeter(this.getValue()*conversionFactorForCentiMeter);
+    public Quantity convertToBase() {
+        Quantity centimeter = new CentiMeter(this.getValue()* CONVERSION_FACTOR_TO_BASE_UNIT);
         return centimeter;
     }
 
-    public Length convertFromCentiMeter(Length length){
 
-        double inchValue = (length.getValue())*conversionFactorFromCentiMeterToInch;
-        Length inch = new Inch(inchValue);
-        return inch;
+
+
+    @Override
+    public Quantity addQuantity(Quantity quantity){
+
+        return new Inch(quantity.convertTo(this).getValue()+this.getValue());
+
+       // return length;
     }
 
-    public Length addLength(Length length2){
-
-        Length length = new Inch(length2.convertTo(this).getValue()+this.getValue());
-
-        return this;
+    @Override
+    public Quantity makeDummy(double value) {
+        return new Inch(value);
     }
+
+    @Override
+    public double getConversionFactor() {
+        return CONVERSION_FACTOR_TO_BASE_UNIT;
+    }
+
+
 
 }

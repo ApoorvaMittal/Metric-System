@@ -1,16 +1,16 @@
 /**
- * Created by Apoorva Mittal on 10-08-2015.
+ * Created by Apoorva Mittal on 11-08-2015.
  */
-public class CentiMeter extends Quantity {
+public class Tbsp extends Volume {
+
     private final double CONVERSION_FACTOR_TO_BASE_UNIT = 1;
 
-    public CentiMeter(double value){
+    public Tbsp(double value){
         super(value);
     }
 
-
     @Override
-    public Quantity convertToBase() {
+    public Volume convertToBase() {
         return this;
     }
 
@@ -22,9 +22,8 @@ public class CentiMeter extends Quantity {
     }
 
 
-
     @Override
-    public Quantity makeDummy(double value) {
-        return new CentiMeter(value);
+    public Volume makeDummy(double value) {
+        return new Tbsp(value);
     }
 }

@@ -1,9 +1,9 @@
 /**
  * Created by Apoorva Mittal on 10-08-2015.
  */
-public class Foot extends Length{
-    private final double conversionFactorFromFootToCentiMeter = 30.48;
-    private final double conversionFactorFromCentiMeterToFoot = 0.0328084;
+public class Foot extends Quantity {
+    private final double CONVERSION_FACTOR_TO_BASE_UNIT = 30.48;
+
 
     public Foot(double value){
         super(value);
@@ -12,22 +12,22 @@ public class Foot extends Length{
 
 
     @Override
-    public Length convertToCentiMeter() {
+    public Quantity convertToBase() {
 
-        Length centimeter = new CentiMeter(this.getValue()*conversionFactorFromFootToCentiMeter);
+        Quantity centimeter = new CentiMeter(this.getValue()* CONVERSION_FACTOR_TO_BASE_UNIT);
         return centimeter;
     }
 
-    public Length convertFromCentiMeter(Length length){
-        double footValue = (length.getValue())*conversionFactorFromCentiMeterToFoot;
-        Length foot = new Foot(footValue);
-        return foot;
+
+
+    @Override
+    public Quantity makeDummy(double value) {
+        return new Foot(value);
     }
-    public Length addLength(Length length2){
 
-        Length length = new Foot(length2.convertTo(this).getValue()+this.getValue());
-
-        return this;
+    @Override
+    public double getConversionFactor() {
+        return CONVERSION_FACTOR_TO_BASE_UNIT;
     }
 
 
